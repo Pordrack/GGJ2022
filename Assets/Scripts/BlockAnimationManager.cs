@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class BlockAnimationManager : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
-        StartGroundAnimations();
+       
     }
 
     // Update is called once per frame
@@ -18,7 +17,5 @@ public class BlockAnimationManager : MonoBehaviour
         
     }
 
-    void StartGroundAnimations(){
-        animator.SetTrigger("StartAnimation");
-    }
+ 
 }
