@@ -240,6 +240,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 387605805904751208, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546521735826631760, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.074
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546521735826631763, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
+      propertyPath: orthographic size
+      value: 8.549529
+      objectReference: {fileID: 0}
     - target: {fileID: 4546521736614387033, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -287,6 +299,34 @@ PrefabInstance:
     - target: {fileID: 4546521736614387035, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
       propertyPath: m_Name
       value: Roger
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546521736614387037, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
+      propertyPath: baseSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546521736614387037, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
+      propertyPath: jumpSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546521736614387037, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
+      propertyPath: turnSpeed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546521736614387037, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
+      propertyPath: m_JumpPower
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546521736614387037, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
+      propertyPath: maxJumpHeight
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546521736614387037, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
+      propertyPath: gravityMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546521736614387039, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
