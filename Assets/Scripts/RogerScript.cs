@@ -147,8 +147,6 @@ public class RogerScript : MonoBehaviour
 
     void JumpFunction(float dt)
     {
-        
-
         if (IsGrounded())
         {
             currentNbrJump = maxNbrJump;
@@ -166,15 +164,22 @@ public class RogerScript : MonoBehaviour
     {
         if (Input.GetButtonDown("Swap"))
         {
-            swapped.Invoke();
-            this.isMoveable = !this.isMoveable;
-            if (!this.isMoveable && !spiritForm.activeSelf)
+            animator.SetBool("IsGhost",!animator.GetBool("IsGhost"));
+            Invoke("DoTranslation",1f);
+        }   
+    }
+    void DoTranslation(){
+        swapped.Invoke();
+        this.isMoveable = !this.isMoveable;
+        if (!this.isMoveable && !spiritForm.activeSelf)
             {
+                
                 spiritForm.SetActive(true);
                 spiritForm.transform.SetPositionAndRotation(transform.position, spiritForm.transform.rotation);
             }
-        }   
     }
+
+
     void dothajump(){
         Rigidbody2D rigidbody = gameObject.GetComponent<Rigidbody2D>();
         rigidbody.velocity=new Vector2(rigidbody.velocity.x, jumpForce);
