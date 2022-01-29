@@ -34,7 +34,7 @@ public class SpiritScript : MonoBehaviour
 
         initialXScale = head.transform.localScale.x;
 
-        animator = gameObject.GetComponent<Animator>();
+        animator = gameObject.GetComponentInChildren<Animator>();
 
         RogerScript.singleton.swapped.AddListener(Swap);
     }
@@ -106,17 +106,12 @@ public class SpiritScript : MonoBehaviour
             if (head.transform.localScale.x > -initialXScale)
             {
                 float localTurnSpeed = turnSpeed;
-                if (wasStatic)
-                {
-                    localTurnSpeed = 1000;
-                }
                 Vector3 change = new Vector3(-Time.deltaTime * localTurnSpeed, 0, 0);
                 if (head.transform.localScale.x - Time.deltaTime * localTurnSpeed < -initialXScale)
                 {
                     change = new Vector3(-initialXScale - head.transform.localScale.x, 0, 0);
                 }
                 head.transform.localScale += change;
-                wasStatic = false;
             }
         }
         else if (h > 0)
@@ -124,17 +119,12 @@ public class SpiritScript : MonoBehaviour
             if (head.transform.localScale.x < initialXScale)
             {
                 float localTurnSpeed = turnSpeed;
-                if (wasStatic)
-                {
-                    localTurnSpeed = 1000;
-                }
                 Vector3 change = new Vector3(Time.deltaTime * localTurnSpeed, 0, 0);
                 if (head.transform.localScale.x + Time.deltaTime * localTurnSpeed > initialXScale)
                 {
                     change = new Vector3(initialXScale - head.transform.localScale.x, 0, 0);
                 }
                 head.transform.localScale += change;
-                wasStatic = false;
             }
         }
         else
@@ -142,34 +132,23 @@ public class SpiritScript : MonoBehaviour
             if (head.transform.localScale.x < 0 && transform.localScale.x > -initialXScale)
             {
                 float localTurnSpeed = turnSpeed;
-                if (wasStatic)
-                {
-                    localTurnSpeed = 1000;
-                }
                 Vector3 change = new Vector3(-Time.deltaTime * localTurnSpeed, 0, 0);
                 if (head.transform.localScale.x - Time.deltaTime * localTurnSpeed < -initialXScale)
                 {
                     change = new Vector3(-initialXScale - head.transform.localScale.x, 0, 0);
                 }
                 head.transform.localScale += change;
-                wasStatic = false;
             }
             else if (head.transform.localScale.x > 0 && head.transform.localScale.x < initialXScale)
             {
                 float localTurnSpeed = turnSpeed;
-                if (wasStatic)
-                {
-                    localTurnSpeed = 1000;
-                }
                 Vector3 change = new Vector3(Time.deltaTime * localTurnSpeed, 0, 0);
                 if (head.transform.localScale.x + Time.deltaTime * localTurnSpeed > initialXScale)
                 {
                     change = new Vector3(initialXScale - head.transform.localScale.x, 0, 0);
                 }
                 head.transform.localScale += change;
-                wasStatic = false;
             }
-            wasStatic = true;
         }
     }
 
