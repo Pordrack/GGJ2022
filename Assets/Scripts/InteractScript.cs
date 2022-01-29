@@ -15,25 +15,34 @@ public class InteractScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        collidedObjects.Clear(); //clear the list of all tracked objects.
+        if (Input.GetButtonDown("Interact"))
+        {
+            foreach (Collider2D col in collidedObjects)
+            {
+                InteractableScript interactableScript = col.gameObject.GetComponent<InteractableScript>();
+                interactableScript.onPress();
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (!collidedObjects.Contains(col) && col.gameObject.tag=="interactable" && canInteract)
+        if (col.gameObject.tag=="interactable" && canInteract)
         {
-            collidedObjects.Add(col);
-            InteractPrompt.SetActive(true);
+            if (!collidedObjects.Contains(col))
+            {
+                collidedObjects.Add(col);
+                InteractPrompt.SetActive(true);
+            } 
         }
-    }
-
-    void OnTriggerStay2D(Collider2D col)
-    {
-        OnTriggerEnter2D(col); //same as enter
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
+        if (collidedObjects.Contains(col))
+        {
+            collidedObjects.Remove(col);
+        }
         if (collidedObjects.Count <= 0)
         {
             InteractPrompt.SetActive(false);

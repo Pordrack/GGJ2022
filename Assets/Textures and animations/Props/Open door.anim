@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DoorMocheHugoOpen
+  m_Name: Open door
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -21,15 +21,15 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 4339306274054063006, guid: 44ca1ed7b14f23f49bc74fd58d16e072, type: 3}
-    - time: 0.1
+    - time: 0.083333336
       value: {fileID: -8968590530887943038, guid: 44ca1ed7b14f23f49bc74fd58d16e072, type: 3}
     - time: 0.18333334
       value: {fileID: -2985741072533399148, guid: 44ca1ed7b14f23f49bc74fd58d16e072, type: 3}
-    - time: 0.28333333
+    - time: 0.26666668
       value: {fileID: -2382210467438147164, guid: 44ca1ed7b14f23f49bc74fd58d16e072, type: 3}
     - time: 0.36666667
       value: {fileID: 6919341900692882090, guid: 44ca1ed7b14f23f49bc74fd58d16e072, type: 3}
-    - time: 0.46666667
+    - time: 0.45
       value: {fileID: -6334898474366325258, guid: 44ca1ed7b14f23f49bc74fd58d16e072, type: 3}
     - time: 0.55
       value: {fileID: 2330305032241721549, guid: 44ca1ed7b14f23f49bc74fd58d16e072, type: 3}
