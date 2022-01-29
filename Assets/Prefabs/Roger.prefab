@@ -137,7 +137,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4546521736614387035}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 48b7f7147b16f1c418b5b6e1a9e5f78b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -175,6 +175,9 @@ MonoBehaviour:
   isMoveable: 1
   gravityMultiplier: 10
   spiritForm: {fileID: 0}
+  swapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6981131812218772950
 GameObject:
   m_ObjectHideFlags: 0
