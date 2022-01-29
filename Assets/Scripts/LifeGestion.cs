@@ -30,12 +30,15 @@ public class LifeGestion : MonoBehaviour
         Invoke ("DisableDamagAnim", (float)0.05);
     }
     void DisableDamagAnim(){
+        animator.SetBool("TakeDamage",false);
         if(this.actualHP <=0){
             animator.SetBool("IsDead", true);
             this.gameObject.GetComponent<BoxCollider2D>().enabled=false;
-            this.gameObject.GetComponent<ParticleSystem>().enableEmission=false;
+            ParticleSystem part = this.gameObject.GetComponent<ParticleSystem>();
+            if(part){
+                part.enableEmission=false;
+            }
         }
-        animator.SetBool("TakeDamage",false);
         
     }
 }
