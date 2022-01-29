@@ -73,7 +73,7 @@ public class RogerScript : MonoBehaviour
         Vector2 m_Move = new Vector2(h * speed, 0); //Et on en fait un mouvement a appliquer
         Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
 
-        //On envoie le mouvement désiré à l'animateur
+        //On envoie le mouvement dï¿½sirï¿½ ï¿½ l'animateur
         animator.SetFloat("xSpeed", Mathf.Abs(100 * h));
 
         //Se retourne (code bien sale mais tkt)
@@ -146,16 +146,20 @@ public class RogerScript : MonoBehaviour
             }
                 wasStatic = true;
         }
-        Vector2 cVel = rb.velocity; //On recupere la velocité actuelle, pour pouvoir faire une transition
+
+
+        Vector2 cVel = rb.velocity; //On recupere la velocitï¿½ actuelle, pour pouvoir faire une transition
+
         float multi = localControlRate * Time.deltaTime;
-        if (multi > 1) //Si les FPS suivent pas, on va changer la velocité instantennement, pour eviter les dépassements etc.
+        if (multi > 1) //Si les FPS suivent pas, on va changer la velocitï¿½ instantennement, pour eviter les dï¿½passements etc.
             multi = 1;
-        //On va rapprocher la velocité actuelle de la vélocité désirée
+        //On va rapprocher la velocitï¿½ actuelle de la vï¿½locitï¿½ dï¿½sirï¿½e
         rb.velocity = new Vector2(cVel.x + (m_Move.x - cVel.x) * multi, rb.velocity.y);
     }
 
     bool IsGrounded()
     {
+        //animator.SetBool("IsJumping",false);
         //bool cond1 = Physics2D.Raycast(transform.position, -gameObject.transform.up, distToGround + 0.1f);
         bool cond1 = feets.onGround;
         return cond1;
@@ -163,7 +167,7 @@ public class RogerScript : MonoBehaviour
 
     void JumpFunction(float dt)
     {
-        Rigidbody2D rigidbody = gameObject.GetComponent<Rigidbody2D>();
+        
 
         if (IsGrounded())
         {
@@ -173,7 +177,8 @@ public class RogerScript : MonoBehaviour
         if (currentNbrJump > 0 && Input.GetButtonDown("Jump"))
         {
             Invoke("removeAJump",0.1f);
-            rigidbody.velocity=new Vector2(rigidbody.velocity.x, jumpForce);
+            animator.SetBool("IsJumping",true);
+            Invoke("dothajump",0.2f);
         }
     }
 
@@ -190,7 +195,16 @@ public class RogerScript : MonoBehaviour
             }
         }   
     }
+    void dothajump(){
+        Rigidbody2D rigidbody = gameObject.GetComponent<Rigidbody2D>();
+        rigidbody.velocity=new Vector2(rigidbody.velocity.x, jumpForce);
+        Invoke("deleteAnimJump",0.2f);
 
+    }
+    void deleteAnimJump(){
+        animator.SetBool("IsJumping",false);
+
+    }
     void removeAJump()
     {
         currentNbrJump--;
