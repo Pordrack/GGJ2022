@@ -1,3 +1,4 @@
+using Prime31;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,16 +26,20 @@ public class RogerScript : MonoBehaviour
 
     private FeetScript feets;
 
+    private Vector3 velocity;
+
+    private CharacterController2D characterController;
+
     // Start is called before the first frame update
     void Start()
     {
         distToGround = gameObject.GetComponent<Collider2D>().bounds.extents.y;
         initialXScale = transform.localScale.x;
         Physics.gravity = new Vector3(0, -30, 0);
-        //float caca=2*gameObject.GetComponent<Collider>().bounds.extents.x;
 
         feets = gameObject.GetComponentInChildren<FeetScript>();
         animator = gameObject.GetComponent<Animator>();
+        characterController = gameObject.GetComponent<CharacterController2D>();
     }
 
     // Update is called once per frame
@@ -97,28 +102,17 @@ public class RogerScript : MonoBehaviour
             wasStatic = true;
         }
 
-        Vector2 cVel = rb.velocity; //On recupere la velocité actuelle, pour pouvoir faire une transition
-        float multi = controlRate * Time.deltaTime;
-        if (multi > 1) //Si les FPS suivent pas, on va changer la velocité instantennement, pour eviter les dépassements etc.
-            multi = 1;
-        //On va rapprocher la velocité actuelle de la vélocité désirée
-        rb.velocity = new Vector2(cVel.x + (m_Move.x - cVel.x) * multi, rb.velocity.y);
-    }
-
-    bool IsGrounded()
-    {
-        //bool cond1 = Physics2D.Raycast(transform.position, -gameObject.transform.up, distToGround + 0.1f);
-        bool cond1 = feets.onGround;
-        return cond1;
+        characterController.move(new Vector3(h * speed*Time.deltaTime, 0));
     }
 
     void JumpFunction(float dt)
     {
         Rigidbody2D rigidbody = gameObject.GetComponent<Rigidbody2D>();
 
-        if (IsGrounded())
+        if (characterController.isGrounded)
         {
             jumpTimer = maxJumpHeight / jumpSpeed;
+            velocity.y = 0;
             gravityForce = 0;
         }
         else
@@ -127,16 +121,15 @@ public class RogerScript : MonoBehaviour
             {
                 jumpTimer = 0;
             }
-            
             gravityForce += dt * gravityMultiplier * (Physics2D.gravity.y);
-            rigidbody.AddForce(new Vector2(0, gravityForce));
+            characterController.move(new Vector2(0, gravityForce*dt));
         }
+
 
         if (jumpTimer > 0 && Input.GetButton("Jump"))
         {
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed * 0.75f);
+            velocity.y+= jumpSpeed * dt * -gravityForce;
             jumpTimer -= dt;
         }
-        
     }
 }

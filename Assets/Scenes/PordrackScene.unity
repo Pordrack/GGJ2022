@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 416683700}
   - component: {fileID: 416683699}
   - component: {fileID: 416683698}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,8 +325,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4546521736614387039, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546521736614387039, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
       propertyPath: m_GravityScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7844798812901440247, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
+      propertyPath: platformMask.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
