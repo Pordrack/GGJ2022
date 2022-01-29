@@ -20,11 +20,7 @@ public class RogerScript : MonoBehaviour
 
     private float gravityForce;
 
-    private bool wasStatic = true;
-
     private Animator animator;
-
-    private float jumpTimer;
 
     private FeetScript feets;
     public GameObject spiritForm;
@@ -101,7 +97,6 @@ public class RogerScript : MonoBehaviour
                     change = new Vector3(initialXScale - transform.localScale.x, 0, 0);
                 }
                 transform.localScale += change;
-                wasStatic = false;
             }
         }
         else
@@ -152,6 +147,11 @@ public class RogerScript : MonoBehaviour
         if (IsGrounded())
         {
             currentNbrJump = maxNbrJump;
+        }
+        else
+        {
+            if (currentNbrJump > maxNbrJump - 1)
+                currentNbrJump = maxNbrJump - 1;
         }
 
         if (currentNbrJump > 0 && Input.GetButtonDown("Jump"))

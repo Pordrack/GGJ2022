@@ -24,9 +24,11 @@ public class SpiritScript : MonoBehaviour
     private float angle = 0;
 
     private float initialXScale;
-    private bool wasStatic = true;
+
+    public static SpiritScript singleton;
     void Start()
     {
+        singleton = this;
         particles = transform.Find("Particles").gameObject;
         head = transform.Find("Head").gameObject;
         collider = gameObject.GetComponent<Collider2D>();
