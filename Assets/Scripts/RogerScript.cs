@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RogerScript : MonoBehaviour
 {
@@ -28,9 +29,14 @@ public class RogerScript : MonoBehaviour
     private FeetScript feets;
     public GameObject spiritForm;
 
+    public UnityEvent swapped;
+
+    public static RogerScript singleton;
+
     // Start is called before the first frame update
     void Start()
     {
+        singleton = this;
         distToGround = gameObject.GetComponent<Collider2D>().bounds.extents.y;
         initialXScale = transform.localScale.x;
         Physics.gravity = new Vector3(0, -30, 0);
@@ -43,6 +49,7 @@ public class RogerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Swap();
         float localControlRate = controlRate;
 
         float speed = baseSpeed;
@@ -75,17 +82,12 @@ public class RogerScript : MonoBehaviour
             if (transform.localScale.x > -initialXScale)
             {
                 float localTurnSpeed = turnSpeed;
-                if (wasStatic)
-                {
-                    localTurnSpeed = 1000;
-                }
                 Vector3 change = new Vector3(-Time.deltaTime * localTurnSpeed, 0, 0);
                 if (transform.localScale.x - Time.deltaTime * localTurnSpeed < -initialXScale)
                 {
                     change = new Vector3(-initialXScale - transform.localScale.x, 0, 0);
                 }
                 transform.localScale += change;
-                wasStatic = false;
             }
         }
         else if (h > 0)
@@ -93,10 +95,6 @@ public class RogerScript : MonoBehaviour
             if (transform.localScale.x < initialXScale)
             {
                 float localTurnSpeed = turnSpeed;
-                if (wasStatic)
-                {
-                    localTurnSpeed = 1000;
-                }
                 Vector3 change = new Vector3(Time.deltaTime * localTurnSpeed, 0, 0);
                 if (transform.localScale.x + Time.deltaTime * localTurnSpeed > initialXScale)
                 {
@@ -111,33 +109,22 @@ public class RogerScript : MonoBehaviour
             if (transform.localScale.x < 0 && transform.localScale.x>-initialXScale)
             {
                 float localTurnSpeed = turnSpeed;
-                if (wasStatic)
-                {
-                    localTurnSpeed = 1000;
-                }
                 Vector3 change = new Vector3(-Time.deltaTime * localTurnSpeed, 0, 0);
                 if (transform.localScale.x - Time.deltaTime * localTurnSpeed < -initialXScale)
                 {
                     change = new Vector3(-initialXScale - transform.localScale.x, 0, 0);
                 }
                 transform.localScale += change;
-                wasStatic = false;
             }else if (transform.localScale.x > 0 && transform.localScale.x < initialXScale)
             {
                 float localTurnSpeed = turnSpeed;
-                if (wasStatic)
-                {
-                    localTurnSpeed = 1000;
-                }
                 Vector3 change = new Vector3(Time.deltaTime * localTurnSpeed, 0, 0);
                 if (transform.localScale.x + Time.deltaTime * localTurnSpeed > initialXScale)
                 {
                     change = new Vector3(initialXScale - transform.localScale.x, 0, 0);
                 }
                 transform.localScale += change;
-                wasStatic = false;
             }
-                wasStatic = true;
         }
 
 
@@ -177,11 +164,16 @@ public class RogerScript : MonoBehaviour
 
     void Swap()
     {
-        this.isMoveable = !this.isMoveable;
-        if (!this.isMoveable)
+        if (Input.GetButtonDown("Swap"))
         {
-            spiritForm.transform.SetPositionAndRotation(transform.position, spiritForm.transform.rotation);
-        }
+            swapped.Invoke();
+            this.isMoveable = !this.isMoveable;
+            if (!this.isMoveable && !spiritForm.activeSelf)
+            {
+                spiritForm.SetActive(true);
+                spiritForm.transform.SetPositionAndRotation(transform.position, spiritForm.transform.rotation);
+            }
+        }   
     }
     void dothajump(){
         Rigidbody2D rigidbody = gameObject.GetComponent<Rigidbody2D>();
