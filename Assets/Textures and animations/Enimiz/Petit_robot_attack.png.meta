@@ -1,49 +1,55 @@
 fileFormatVersion: 2
-guid: f162ef38681e49f4b983515a97e4ac95
+guid: a494c385661147b44ac9252b91e721c4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5164908643399599209
-    second: Rogert_attack_0
+      213: 7007259043882885268
+    second: Petit_robot_attack_0
   - first:
-      213: -6093513168217900851
-    second: Rogert_attack_1
+      213: -1246256642959673454
+    second: Petit_robot_attack_1
   - first:
-      213: -1455707127198862023
-    second: Rogert_attack_2
+      213: 7372109892415638755
+    second: Petit_robot_attack_2
   - first:
-      213: 8230180947991357784
-    second: Rogert_attack_3
+      213: -7964747255964206460
+    second: Petit_robot_attack_3
   - first:
-      213: 2658986075694171419
-    second: Rogert_attack_4
+      213: 9214107720145752067
+    second: Petit_robot_attack_4
   - first:
-      213: 7977442591976621059
-    second: Rogert_attack_5
+      213: 6890143956589122118
+    second: Petit_robot_attack_5
   - first:
-      213: 6086243516512202048
-    second: Rogert_attack_6
+      213: -4944108552962045052
+    second: Petit_robot_attack_6
   - first:
-      213: -1131762526454427085
-    second: Rogert_attack_7
+      213: 8326454617323378816
+    second: Petit_robot_attack_7
   - first:
-      213: -8967780136152348546
-    second: Rogert_attack_8
+      213: -4233174769720406463
+    second: Petit_robot_attack_8
   - first:
-      213: -7577237965046880243
-    second: Rogert_attack_9
+      213: -6167035241778337091
+    second: Petit_robot_attack_9
   - first:
-      213: 6586537743703138364
-    second: Rogert_attack_10
+      213: -6758096316293202999
+    second: Petit_robot_attack_10
   - first:
-      213: -4315564390951996759
-    second: Rogert_attack_11
+      213: -5498070965873940261
+    second: Petit_robot_attack_11
   - first:
-      213: -8807323112919236423
-    second: Rogert_attack_12
+      213: -1872088975446069698
+    second: Petit_robot_attack_12
   - first:
-      213: -7933606138751407447
-    second: Rogert_attack_13
+      213: -3255816691708869309
+    second: Petit_robot_attack_13
+  - first:
+      213: 2608529886242875350
+    second: Petit_robot_attack_14
+  - first:
+      213: -285573319404487217
+    second: Petit_robot_attack_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -133,7 +139,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rogert_attack_0
+      name: Petit_robot_attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -147,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79b72d424fe8258b0800000000000000
-      internalID: -5164908643399599209
+      spriteID: 49068cf69f8ce3160800000000000000
+      internalID: 7007259043882885268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rogert_attack_1
+      name: Petit_robot_attack_1
       rect:
         serializedVersion: 2
         x: 64
@@ -168,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc8f43eee0e7f6ba0800000000000000
-      internalID: -6093513168217900851
+      spriteID: 297fa69af2864bee0800000000000000
+      internalID: -1246256642959673454
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rogert_attack_2
+      name: Petit_robot_attack_2
       rect:
         serializedVersion: 2
         x: 128
@@ -189,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 935be4a941a4ccbe0800000000000000
-      internalID: -1455707127198862023
+      spriteID: 3ecc39653eefe4660800000000000000
+      internalID: 7372109892415638755
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rogert_attack_3
+      name: Petit_robot_attack_3
       rect:
         serializedVersion: 2
         x: 192
@@ -210,14 +216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 859663287f9773270800000000000000
-      internalID: 8230180947991357784
+      spriteID: 48a7c7ad198877190800000000000000
+      internalID: -7964747255964206460
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rogert_attack_4
+      name: Petit_robot_attack_4
       rect:
         serializedVersion: 2
         x: 0
@@ -231,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1506787fbd96e420800000000000000
-      internalID: 2658986075694171419
+      spriteID: 300d87d27261fdf70800000000000000
+      internalID: 9214107720145752067
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rogert_attack_5
+      name: Petit_robot_attack_5
       rect:
         serializedVersion: 2
         x: 64
@@ -252,14 +258,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30486d665c195be60800000000000000
-      internalID: 7977442591976621059
+      spriteID: 6429cc74c65be9f50800000000000000
+      internalID: 6890143956589122118
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rogert_attack_6
+      name: Petit_robot_attack_6
       rect:
         serializedVersion: 2
         x: 128
@@ -273,14 +279,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04deb326b3ea67450800000000000000
-      internalID: 6086243516512202048
+      spriteID: 48b0ab1577ff26bb0800000000000000
+      internalID: -4944108552962045052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rogert_attack_7
+      name: Petit_robot_attack_7
       rect:
         serializedVersion: 2
         x: 192
@@ -294,14 +300,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 332d5908afb2b40f0800000000000000
-      internalID: -1131762526454427085
+      spriteID: 08898f7eb528d8370800000000000000
+      internalID: 8326454617323378816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rogert_attack_8
+      name: Petit_robot_attack_8
       rect:
         serializedVersion: 2
         x: 0
@@ -315,14 +321,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e78c5d0ca7b0c8380800000000000000
-      internalID: -8967780136152348546
+      spriteID: 14e4baaa9fdb045c0800000000000000
+      internalID: -4233174769720406463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rogert_attack_9
+      name: Petit_robot_attack_9
       rect:
         serializedVersion: 2
         x: 64
@@ -336,14 +342,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d08e6ca773e38d690800000000000000
-      internalID: -7577237965046880243
+      spriteID: dbaac783f1a4a6aa0800000000000000
+      internalID: -6167035241778337091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rogert_attack_10
+      name: Petit_robot_attack_10
       rect:
         serializedVersion: 2
         x: 128
@@ -357,14 +363,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c30e0215e25186b50800000000000000
-      internalID: 6586537743703138364
+      spriteID: 9cbb77dc43b6632a0800000000000000
+      internalID: -6758096316293202999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rogert_attack_11
+      name: Petit_robot_attack_11
       rect:
         serializedVersion: 2
         x: 192
@@ -378,14 +384,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a23bff1d090c14c0800000000000000
-      internalID: -4315564390951996759
+      spriteID: bd8e139269de2b3b0800000000000000
+      internalID: -5498070965873940261
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rogert_attack_12
+      name: Petit_robot_attack_12
       rect:
         serializedVersion: 2
         x: 0
@@ -399,14 +405,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b08c50ca4a16c580800000000000000
-      internalID: -8807323112919236423
+      spriteID: e3eac9edef00506e0800000000000000
+      internalID: -1872088975446069698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rogert_attack_13
+      name: Petit_robot_attack_13
       rect:
         serializedVersion: 2
         x: 64
@@ -420,8 +426,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9aa2dd7304b26e190800000000000000
-      internalID: -7933606138751407447
+      spriteID: 345c7ec08f301d2d0800000000000000
+      internalID: -3255816691708869309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Petit_robot_attack_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d72f776c1c533420800000000000000
+      internalID: 2608529886242875350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Petit_robot_attack_15
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcdf09b3490790cf0800000000000000
+      internalID: -285573319404487217
       vertices: []
       indices: 
       edges: []
