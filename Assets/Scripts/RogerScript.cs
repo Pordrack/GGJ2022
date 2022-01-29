@@ -12,6 +12,7 @@ public class RogerScript : MonoBehaviour
     private float initialXScale;
     public float controlRate = 5;
     public float turnSpeed = 2;
+    public bool isMoveable = true;
 
     private float distToGround;
     public float gravityMultiplier = 2;
@@ -25,6 +26,7 @@ public class RogerScript : MonoBehaviour
     private float jumpTimer;
 
     private FeetScript feets;
+    public GameObject spiritForm;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +43,6 @@ public class RogerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        JumpFunction(Time.deltaTime);
         float localControlRate = controlRate;
 
         float speed = baseSpeed;
@@ -56,15 +57,19 @@ public class RogerScript : MonoBehaviour
         }
 
         //Se deplace
-        float h = Input.GetAxis("Horizontal"); //On recupere les axes
+        float h = 0;
+        if (isMoveable)
+        {
+            JumpFunction(Time.deltaTime);
+            h = Input.GetAxis("Horizontal"); //On recupere les axes
+        }
         Vector2 m_Move = new Vector2(h * speed, 0); //Et on en fait un mouvement a appliquer
         Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
 
         //On envoie le mouvement désiré à l'animateur
         animator.SetFloat("xSpeed", Mathf.Abs(100 * h));
 
-
-        //Se retourne
+        //Se retourne (code bien sale mais tkt)
         if (h < 0)
         {
             if (transform.localScale.x > -initialXScale)
@@ -103,9 +108,37 @@ public class RogerScript : MonoBehaviour
         }
         else
         {
-            wasStatic = true;
+            if (transform.localScale.x < 0 && transform.localScale.x>-initialXScale)
+            {
+                float localTurnSpeed = turnSpeed;
+                if (wasStatic)
+                {
+                    localTurnSpeed = 1000;
+                }
+                Vector3 change = new Vector3(-Time.deltaTime * localTurnSpeed, 0, 0);
+                if (transform.localScale.x - Time.deltaTime * localTurnSpeed < -initialXScale)
+                {
+                    change = new Vector3(-initialXScale - transform.localScale.x, 0, 0);
+                }
+                transform.localScale += change;
+                wasStatic = false;
+            }else if (transform.localScale.x > 0 && transform.localScale.x < initialXScale)
+            {
+                float localTurnSpeed = turnSpeed;
+                if (wasStatic)
+                {
+                    localTurnSpeed = 1000;
+                }
+                Vector3 change = new Vector3(Time.deltaTime * localTurnSpeed, 0, 0);
+                if (transform.localScale.x + Time.deltaTime * localTurnSpeed > initialXScale)
+                {
+                    change = new Vector3(initialXScale - transform.localScale.x, 0, 0);
+                }
+                transform.localScale += change;
+                wasStatic = false;
+            }
+                wasStatic = true;
         }
-
         Vector2 cVel = rb.velocity; //On recupere la velocité actuelle, pour pouvoir faire une transition
         float multi = localControlRate * Time.deltaTime;
         if (multi > 1) //Si les FPS suivent pas, on va changer la velocité instantennement, pour eviter les dépassements etc.
@@ -135,7 +168,15 @@ public class RogerScript : MonoBehaviour
             Invoke("removeAJump",0.1f);
             rigidbody.velocity=new Vector2(rigidbody.velocity.x, jumpForce);
         }
+    }
 
+    void Swap()
+    {
+        this.isMoveable = !this.isMoveable;
+        if (!this.isMoveable)
+        {
+            spiritForm.transform.SetPositionAndRotation(transform.position, spiritForm.transform.rotation);
+        }
     }
 
     void removeAJump()
