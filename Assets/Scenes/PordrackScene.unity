@@ -385,7 +385,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4546521736614387037, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
       propertyPath: baseSpeed
-      value: 400
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546521736614387037, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
+      propertyPath: jumpForce
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4546521736614387037, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
       propertyPath: jumpSpeed
@@ -417,11 +421,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4546521736614387039, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
       propertyPath: m_GravityScale
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7844798812901440247, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
       propertyPath: platformMask.m_Bits
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7844798812901440247, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
