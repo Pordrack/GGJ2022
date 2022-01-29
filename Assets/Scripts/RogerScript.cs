@@ -102,13 +102,17 @@ public class RogerScript : MonoBehaviour
             wasStatic = true;
         }
 
-        characterController.move(new Vector3(h * speed*Time.deltaTime, 0));
+        float multi = controlRate * Time.deltaTime;
+        if (multi > 1) //Si les FPS suivent pas, on va changer la velocité instantennement, pour eviter les dépassements etc.
+            multi = 1;
+        //On va rapprocher la velocité actuelle de la vélocité désirée
+        velocity.x =  ((h * speed) - velocity.x) * multi;
+
+        characterController.move(velocity*Time.deltaTime);
     }
 
     void JumpFunction(float dt)
     {
-        Rigidbody2D rigidbody = gameObject.GetComponent<Rigidbody2D>();
-
         if (characterController.isGrounded)
         {
             jumpTimer = maxJumpHeight / jumpSpeed;
@@ -121,14 +125,13 @@ public class RogerScript : MonoBehaviour
             {
                 jumpTimer = 0;
             }
-            gravityForce += dt * gravityMultiplier * (Physics2D.gravity.y);
-            characterController.move(new Vector2(0, gravityForce*dt));
+            velocity.y += dt * gravityMultiplier * Physics2D.gravity.y;
         }
 
 
         if (jumpTimer > 0 && Input.GetButton("Jump"))
         {
-            velocity.y+= jumpSpeed * dt * -gravityForce;
+            velocity.y= jumpSpeed;
             jumpTimer -= dt;
         }
     }
