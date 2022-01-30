@@ -84,11 +84,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4546521736614387033, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.438242
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4546521736614387033, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.352755
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4546521736614387033, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -124,7 +124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4546521736614387035, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
       propertyPath: m_Name
-      value: Roger
+      value: Roger new
       objectReference: {fileID: 0}
     - target: {fileID: 4546521736614387035, guid: 418eab54367c45543b3e5cfd89e30f0d, type: 3}
       propertyPath: m_TagString
