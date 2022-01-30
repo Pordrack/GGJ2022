@@ -33,5 +33,15 @@ public class ModificatorScript : MonoBehaviour
         RogerScript.singleton.baseSpeed *= 1.5f;
         RogerScript.singleton.baseSpeed /= 1.5f;
     }
+    public void doubleJump(){
+        RogerScript.singleton.maxNbrJump = 2;
+        SpiritScript.singleton.canFly = false;
+        SpiritScript.singleton.GetComponent<Rigidbody2D>().gravityScale = 2;
+        SpiritScript.singleton.GetComponent<Collider2D>().isTrigger = false;
+    }
+    public void spiritCanPressBtn(){
+        RogerScript.singleton.GetComponent<InteractScript>().canInteract = false;
+        SpiritScript.singleton.GetComponent<InteractScript>().canInteract = true;
+    }
 
 }
