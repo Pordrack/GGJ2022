@@ -48,6 +48,9 @@ TagManager:
   - name: Background
     uniqueID: 536704287
     locked: 0
+  - name: Deco
+    uniqueID: 3651323371
+    locked: 0
   - name: EntityBulle
     uniqueID: 1994907331
     locked: 0
