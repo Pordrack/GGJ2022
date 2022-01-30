@@ -15,6 +15,9 @@ public class CameraScript : MonoBehaviour
     public PostProcessVolume postProcessing;
     public float controlRate=5;
 
+    public float minX = -50;
+    public float minY = -30;
+
     // Start is called before the first frame update
     void Start()
     {    
