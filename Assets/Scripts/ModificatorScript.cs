@@ -40,7 +40,7 @@ public class ModificatorScript : MonoBehaviour
         SpiritScript.singleton.GetComponent<Collider2D>().isTrigger = false;
     }
     public void spiritCanPressBtn(){
-        RogerScript.singleton.GetComponent<InteractScript>().canInteract = false;
+        RogerScript.singleton.GetComponent<InteractScript>().enabled=false;
         SpiritScript.singleton.GetComponent<InteractScript>().canInteract = true;
     }
 
