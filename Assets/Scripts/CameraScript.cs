@@ -63,6 +63,16 @@ public class CameraScript : MonoBehaviour
                 postProcessing.weight += diff;
             }
         }
+
+        if (transform.position.x < minX)
+        {
+            transform.SetPositionAndRotation(new Vector3(minX, transform.position.y, transform.position.z), transform.rotation);
+        }
+
+        if (transform.position.y < minY)
+        {
+            transform.SetPositionAndRotation(new Vector3(transform.position.x, minY, transform.position.z), transform.rotation);
+        }
     }
     void Swap()
     {
