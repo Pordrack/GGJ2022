@@ -156,7 +156,7 @@ public class RogerScript : MonoBehaviour
         {
             Invoke("removeAJump",0.1f);
             animator.SetBool("IsJumping",true);
-            Invoke("dothajump",0.2f);
+            Invoke("dothajump",0f);
         }
     }
 

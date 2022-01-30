@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ApplyDamage : MonoBehaviour
 {
-    public GameObject roger;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +18,7 @@ public class ApplyDamage : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("Player")) {
-            roger.GetComponent<Respawn>().Die();
+            RogerScript.singleton.GetComponent<Respawn>().Die();
         }
     }
 }

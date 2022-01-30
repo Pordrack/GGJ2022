@@ -43,8 +43,6 @@ public class Respawn : MonoBehaviour
     public void Die()
     {
         Animator animator = gameObject.GetComponent<Animator>();
-        Debug.Log(transform.gameObject.name);
-        Debug.Log(ourCharacter.transform.position);
         ourCharacter.transform.SetPositionAndRotation(respawnCoords, ourCharacter.transform.rotation);
         animator.Rebind();
 

@@ -10,6 +10,8 @@ public class Shoot : MonoBehaviour
     public Rigidbody2D rbProjectile;
     private Vector2 mMovement;
     private Int16 isFacingRight = 1;
+    public float maxCooldown = 0.5f;
+    private float cooldown = 0;
     public Animator animator;
     public GameObject robot;
  
@@ -25,7 +27,7 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        cooldown -= Time.deltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -42,15 +44,23 @@ public class Shoot : MonoBehaviour
         }
     }
     void StartAttackingPlayer(){   
-        if(isInRange){
+        if(isInRange && cooldown<0){
+            cooldown = maxCooldown;
             robot.GetComponent<LifeGestion>().SwapAttaks();
             Rigidbody2D clone;
             clone = Instantiate(rbProjectile, transform.position, transform.rotation);
             mMovement = new Vector2 (1,0);
-            clone.AddForce((mMovement * 1000 * isFacingRight));
+            if (transform.lossyScale.x < 0)
+            {
+                clone.AddForce((mMovement * 1000 * 1));
+            }
+            if (transform.lossyScale.x > 0)
+            {
+                clone.AddForce((mMovement * 1000 * -1));
+            }
+
         }
         Invoke("StartAttackingPlayer",2f);
-        
     }   
 
 }
