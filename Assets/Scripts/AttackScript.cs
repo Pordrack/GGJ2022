@@ -1,3 +1,4 @@
+using System.Threading;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ public class AttackScript : MonoBehaviour
     public GameObject robot;
     private Boolean isInRange;
     private Boolean isLasering;
+    private Rigidbody2D clone;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +28,14 @@ public class AttackScript : MonoBehaviour
     void Update()
     {
         if(roger.transform.position.x <= this.transform.parent.position.x){
-                this.transform.parent.rotation = new Quaternion(0,-180,0,0);
-                isFacingRight = -1;
+            this.transform.parent.rotation = new Quaternion(0,-180,0,0);
+            isFacingRight = -1;
         }else{
-                this.transform.parent.rotation = new Quaternion(0,0,0,0);
-                isFacingRight = 1;
-        }
+            this.transform.parent.rotation = new Quaternion(0,0,0,0);
+            isFacingRight = 1;
+        }       
     }
+    
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("Player")) {
