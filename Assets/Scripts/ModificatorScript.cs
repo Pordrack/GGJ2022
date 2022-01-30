@@ -34,7 +34,7 @@ public class ModificatorScript : MonoBehaviour
         RogerScript.singleton.baseSpeed /= 1.5f;
     }
     public void doubleJump(){
-        RogerScript.singleton.maxNbrJump = 2;
+        RogerScript.singleton.maxNbrJump = 3;
         SpiritScript.singleton.canFly = false;
         SpiritScript.singleton.GetComponent<Rigidbody2D>().gravityScale = 2;
         SpiritScript.singleton.GetComponent<Collider2D>().isTrigger = false;
