@@ -85,11 +85,20 @@ AnimationClip:
         weightedMode: 0
         inWeight: 0
         outWeight: 0
+      - serializedVersion: 3
+        time: 2.1666667
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: Death Beam Spawn Sprite Sheet_0/Death Beam Sprite Sheet_0
+    path: Death Beam Spawn Sprite Sheet_0
     classID: 61
     script: {fileID: 0}
   m_PPtrCurves:
@@ -170,7 +179,7 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 608868559
+      path: 832468813
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 61
@@ -307,11 +316,20 @@ AnimationClip:
         weightedMode: 0
         inWeight: 0
         outWeight: 0
+      - serializedVersion: 3
+        time: 2.1666667
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: Death Beam Spawn Sprite Sheet_0/Death Beam Sprite Sheet_0
+    path: Death Beam Spawn Sprite Sheet_0
     classID: 61
     script: {fileID: 0}
   m_EulerEditorCurves: []

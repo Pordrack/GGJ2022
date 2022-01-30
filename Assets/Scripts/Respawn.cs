@@ -7,10 +7,11 @@ public class Respawn : MonoBehaviour
 {
     public bool isPlayer;
     private Vector3 respawnCoords;
-    private Animator animator;
+    public Animator animator;
     public UnityEvent respawned;
     void Start()
     {
+        //Animator animator = gameObject.GetComponent<Animator>();
         respawnCoords = new Vector3(transform.position.x,transform.position.y,transform.position.z);
         if (!isPlayer)
         {

@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f68d086aaa96e4a971a25c2ceb2676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roger: {fileID: 2218713698019782146, guid: 8cf96052c9a693c48848752f1252cc0c, type: 3}
 --- !u!1001 &6841148246908375039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -279,7 +280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1093722070717411608, guid: 93dccd8bc7315d44fb69973cedda80d2, type: 3}
       propertyPath: m_Name
-      value: BigRobo
+      value: BigRobo new
       objectReference: {fileID: 0}
     - target: {fileID: 1093722071929511716, guid: 93dccd8bc7315d44fb69973cedda80d2, type: 3}
       propertyPath: m_Enabled
