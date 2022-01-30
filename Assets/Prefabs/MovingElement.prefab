@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5155337670489612027}
   - component: {fileID: 5155337670489612024}
   - component: {fileID: 3343620751414960930}
+  - component: {fileID: 5018297242920704703}
   m_Layer: 3
   m_Name: MovingElement
   m_TagString: Untagged
@@ -96,7 +97,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 5155337670489612020}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 48b7f7147b16f1c418b5b6e1a9e5f78b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -148,6 +149,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &5018297242920704703
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5155337670489612020}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.24811745, y: 0.055286877}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.14376509, y: 0.23276488}
+  m_EdgeRadius: 0
 --- !u!1 &7416894006618568409
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +185,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1123506869313606538}
   - component: {fileID: 2166322895753523671}
-  - component: {fileID: 4532834021965685508}
   - component: {fileID: 8087834980495451236}
   m_Layer: 3
   m_Name: Target
@@ -233,22 +259,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4532834021965685508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7416894006618568409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4dc3faa0bde4c84cbc40f3169b37b6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forceOn: 0
-  flip: 0
-  turnSpeed: 5
-  speed: 2
 --- !u!95 &8087834980495451236
 Animator:
   serializedVersion: 3

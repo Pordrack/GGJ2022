@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour
 {
-    public GameObject roger;
     public GameObject projectile;
     private double attackCount;
     public Rigidbody2D rbProjectile;
@@ -22,6 +21,7 @@ public class AttackScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         // Animator animator = this.GetComponent<Animator>(); 
         attackCount = 0;
     }
@@ -29,6 +29,7 @@ public class AttackScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject roger =RogerScript.singleton.gameObject;
         cooldown -= Time.deltaTime;
         if(roger.transform.position.x <= this.transform.parent.position.x){
             this.transform.parent.rotation = new Quaternion(0,-180,0,0);
@@ -53,6 +54,7 @@ public class AttackScript : MonoBehaviour
         }
     }
     private void OnTriggerStay2D(Collider2D other) {
+        GameObject roger =RogerScript.singleton.gameObject;
         if(other.gameObject.CompareTag("Player") && roger.transform.position.y >= this.transform.parent.position.y && (roger.transform.position.x >= this.transform.parent.position.x-2.7 && roger.transform.position.x <= this.transform.parent.position.x+2.7)) {
             isLasering = true;
             BigLaserSaMere();
