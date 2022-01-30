@@ -46,6 +46,7 @@ public class Shoot : MonoBehaviour
     void StartAttackingPlayer(){   
         if(isInRange && cooldown<0){
             cooldown = maxCooldown;
+            SoundManager.singleton.shoot.Play();
             robot.GetComponent<LifeGestion>().SwapAttaks();
             Rigidbody2D clone;
             clone = Instantiate(rbProjectile, transform.position, transform.rotation);

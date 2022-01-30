@@ -76,6 +76,7 @@ public class AttackScript : MonoBehaviour
         
     }   
     void BigLaserSaMere(){
+        SoundManager.singleton.laser.Play();
         robot.GetComponent<LifeGestion>().InitiateLaser(); 
     }
 }

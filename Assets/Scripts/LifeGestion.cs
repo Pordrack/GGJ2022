@@ -46,6 +46,8 @@ public class LifeGestion : MonoBehaviour
             {
                 gameObject.GetComponentInParent<MovingElement>().enabled = false;
             }
+
+            SoundManager.singleton.boom.Play();
         }
         
     }

@@ -1599,6 +1599,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: KillBottom
       objectReference: {fileID: 0}
+    - target: {fileID: 8925204076460687165, guid: c0ecb29a4fe89dc45b093c58e5f4e4c9, type: 3}
+      propertyPath: m_TagString
+      value: killBottom
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8925204076460687166, guid: c0ecb29a4fe89dc45b093c58e5f4e4c9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c0ecb29a4fe89dc45b093c58e5f4e4c9, type: 3}

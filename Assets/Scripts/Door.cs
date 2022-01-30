@@ -15,6 +15,7 @@ public class Door : MonoBehaviour
     {
         Collider2D col = gameObject.GetComponent<Collider2D>();
         col.isTrigger = true;
+        SoundManager.singleton.door.Play();
         animator.SetBool("open", true);
     }
 }

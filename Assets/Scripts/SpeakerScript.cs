@@ -35,8 +35,6 @@ public class SpeakerScript : MonoBehaviour
         }
         else
         {
-
-
             cooldown = 0.1f;
 
             if (step > 0)
@@ -45,6 +43,7 @@ public class SpeakerScript : MonoBehaviour
             }
             else
             {
+                SoundManager.singleton.mumble.Play();
                 if (SpiritScript.singleton != null)
                 {
                     if (SpiritScript.singleton.isMoveable == true)
@@ -75,6 +74,7 @@ public class SpeakerScript : MonoBehaviour
             }
             else
             {
+                SoundManager.singleton.mumble.Stop();
                 animator.SetBool("talking", false);
                 step = -1;
                 if (spiritTriggeredIt)
