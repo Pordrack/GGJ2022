@@ -41,4 +41,25 @@ public class LifeGestion : MonoBehaviour
         }
         
     }
+    public void SwapAttaks(){
+        if(animator.GetBool("isAttackingWithMissilesArms")){
+            animator.SetBool("isAttackingWithMissilesArms",false);
+            animator.SetBool("isAttackingWithMissilesChest",true);
+        }else{
+            animator.SetBool("isAttackingWithMissilesArms",true);
+            animator.SetBool("isAttackingWithMissilesChest",false);
+        }
+    }
+    public void StopAttacking(){
+        animator.SetBool("isAttackingWithMissilesChest",false);
+        animator.SetBool("isAttackingWithMissilesArms",false);
+    }
+    public void InitiateLaser(){
+        StopAttacking();
+        animator.SetBool("isLazering",true);
+    }
+    public void StopLaser(){
+        animator.SetBool("isLazering",false);
+
+    }
 }
