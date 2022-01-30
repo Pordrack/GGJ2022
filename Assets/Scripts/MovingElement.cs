@@ -8,6 +8,7 @@ public class MovingElement : MonoBehaviour
     private Vector3 initialPosition;
 
     private bool moving;
+    public bool forceOn = false;
 
     public float speed = 2;
     void Start()
@@ -16,6 +17,10 @@ public class MovingElement : MonoBehaviour
         initialPosition= new Vector3(transform.position.x, transform.position.y, transform.position.z);
         targetPosition = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z);
         target.SetActive(false);
+        if (forceOn)
+        {
+            moving = true;
+        }
     }
 
     // Update is called once per frame
@@ -31,7 +36,10 @@ public class MovingElement : MonoBehaviour
                 transform.position = targetPosition;
                 targetPosition = initialPosition;
                 initialPosition = transform.position;
-                moving = false;
+                if (!forceOn)
+                {
+                    moving = false;
+                }
             }
             else
             {
