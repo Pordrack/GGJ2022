@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ApplyDamage : MonoBehaviour
 {
+    public bool selfDestruct = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,10 @@ public class ApplyDamage : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player")) {
             RogerScript.singleton.GetComponent<Respawn>().Die();
+            if (selfDestruct)
+            {
+                Destroy(gameObject);
+            }          
         }
     }
 }

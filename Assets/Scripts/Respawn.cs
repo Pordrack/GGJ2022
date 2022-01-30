@@ -43,12 +43,18 @@ public class Respawn : MonoBehaviour
     public void Die()
     {
         Animator animator = gameObject.GetComponent<Animator>();
-        ourCharacter.transform.SetPositionAndRotation(respawnCoords, ourCharacter.transform.rotation);
-        animator.Rebind();
-
         if (isPlayer)
         {
-            respawned.Invoke();
+            animator.SetBool("IsGhost", true);
+            Invoke("ActuallyDie", 1.0f);
         }
+    }
+
+    void ActuallyDie()
+    {
+        Animator animator = gameObject.GetComponent<Animator>();
+        ourCharacter.transform.SetPositionAndRotation(respawnCoords, ourCharacter.transform.rotation);
+        animator.SetBool("IsGhost", false);
+        animator.Rebind();
     }
 }
