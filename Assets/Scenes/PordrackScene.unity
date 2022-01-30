@@ -1599,7 +1599,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: KillBottom
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8925204076460687166, guid: c0ecb29a4fe89dc45b093c58e5f4e4c9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c0ecb29a4fe89dc45b093c58e5f4e4c9, type: 3}
 --- !u!114 &9098927232120310943 stripped
 MonoBehaviour:

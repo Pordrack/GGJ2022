@@ -38,6 +38,11 @@ public class Respawn : MonoBehaviour
             ParticleSystem.MainModule particles= collision.gameObject.GetComponent<ParticleSystem>().main;
             particles.startColor = new Color(140.0f/255.0f, 30.0f/255.0f, 124.0f/255.0f);
         }
+
+        if (collision.gameObject.tag == "killBottom")
+        {
+            this.ActuallyDie();
+        }
     }
 
     public void Die()
@@ -45,6 +50,7 @@ public class Respawn : MonoBehaviour
         Animator animator = gameObject.GetComponent<Animator>();
         if (isPlayer)
         {
+            RogerScript.singleton.isMoveable = false;
             animator.SetBool("IsGhost", true);
             Invoke("ActuallyDie", 1.0f);
         }
@@ -52,9 +58,9 @@ public class Respawn : MonoBehaviour
 
     void ActuallyDie()
     {
+        RogerScript.singleton.isMoveable = true;
         Animator animator = gameObject.GetComponent<Animator>();
         ourCharacter.transform.SetPositionAndRotation(respawnCoords, ourCharacter.transform.rotation);
-        animator.SetBool("IsGhost", false);
         animator.Rebind();
     }
 }
