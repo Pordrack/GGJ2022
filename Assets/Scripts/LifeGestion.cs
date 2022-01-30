@@ -38,6 +38,14 @@ public class LifeGestion : MonoBehaviour
             if(part){
                 part.enableEmission=false;
             }
+            if (gameObject.GetComponentInChildren<Shoot>() != null)
+            {
+                gameObject.GetComponentInChildren<Shoot>().enabled = false;
+            }
+            if (gameObject.GetComponentInParent<MovingElement>() != null)
+            {
+                gameObject.GetComponentInParent<MovingElement>().enabled = false;
+            }
         }
         
     }
