@@ -46,6 +46,10 @@ public class LifeGestion : MonoBehaviour
             {
                 gameObject.GetComponentInParent<MovingElement>().enabled = false;
             }
+            if (gameObject.GetComponent<Rigidbody2D>() != null)
+            {
+                gameObject.GetComponent<Rigidbody2D>().simulated=true;
+            }
 
             SoundManager.singleton.boom.Play();
         }

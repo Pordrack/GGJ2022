@@ -4869,6 +4869,7 @@ GameObject:
   - component: {fileID: 1275126798539588218}
   - component: {fileID: 1275126798539588221}
   - component: {fileID: 1275126798539588222}
+  - component: {fileID: 4878648816626045250}
   m_Layer: 0
   m_Name: Petit_robot
   m_TagString: Enemy
@@ -5000,6 +5001,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ab4069e755c7949ae1a69df7ab06cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &4878648816626045250
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275126798539588215}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3452922824717134576
 GameObject:
   m_ObjectHideFlags: 0
@@ -5062,6 +5084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rbProjectile: {fileID: 1158367569441652794, guid: ba8917e7d38201947a6d8e2043b0932e, type: 3}
+  maxCooldown: 0.5
   animator: {fileID: 1093722070717411588, guid: 93dccd8bc7315d44fb69973cedda80d2, type: 3}
   robot: {fileID: 1275126798539588215}
 --- !u!1 &7080897427138380843
