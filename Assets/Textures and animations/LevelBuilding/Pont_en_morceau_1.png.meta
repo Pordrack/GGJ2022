@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 17ce27405310df847bdd8c619279827d
+guid: eaf99e991e6a0884da9d0bbb8a4e4821
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9163215374823141543
-    second: Pont_en_morceau_0
+      213: -8820370894694965604
+    second: Pont_en_morceau_1_0
   - first:
-      213: 2207360700249962589
-    second: Pont_en_morceau_1
+      213: 5872414933958980551
+    second: Pont_en_morceau_1_1
   - first:
-      213: 8726078338091883022
-    second: Pont_en_morceau_2
+      213: 103874075698447477
+    second: Pont_en_morceau_1_2
   - first:
-      213: 2020751087673442692
-    second: Pont_en_morceau_3
+      213: 813803817905063005
+    second: Pont_en_morceau_1_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -58,7 +58,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,7 +103,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pont_en_morceau_0
+      name: Pont_en_morceau_1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -117,14 +117,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a03bb8a5d74a2f70800000000000000
-      internalID: 9163215374823141543
+      spriteID: c9e1382576fb79580800000000000000
+      internalID: -8820370894694965604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pont_en_morceau_1
+      name: Pont_en_morceau_1_1
       rect:
         serializedVersion: 2
         x: 64
@@ -138,14 +138,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d587e8d9cde12ae10800000000000000
-      internalID: 2207360700249962589
+      spriteID: 7c3f250e4420f7150800000000000000
+      internalID: 5872414933958980551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pont_en_morceau_2
+      name: Pont_en_morceau_1_2
       rect:
         serializedVersion: 2
         x: 0
@@ -159,14 +159,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0a92380402491970800000000000000
-      internalID: 8726078338091883022
+      spriteID: 574c067ebe8017100800000000000000
+      internalID: 103874075698447477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pont_en_morceau_3
+      name: Pont_en_morceau_1_3
       rect:
         serializedVersion: 2
         x: 64
@@ -180,8 +180,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 481824868662b0c10800000000000000
-      internalID: 2020751087673442692
+      spriteID: d54861bb2463b4b00800000000000000
+      internalID: 813803817905063005
       vertices: []
       indices: 
       edges: []
