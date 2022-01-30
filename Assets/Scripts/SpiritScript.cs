@@ -7,7 +7,7 @@ public class SpiritScript : MonoBehaviour
 {
     public float baseSpeed=20;
     public bool canFly=true;
-    public bool isMoveable = true;
+    public bool isMoveable = false;
 
     private Collider2D collider;
     private Rigidbody2D rb;
@@ -28,6 +28,12 @@ public class SpiritScript : MonoBehaviour
     public static SpiritScript singleton;
     void Start()
     {
+        if (RogerScript.singleton == null)
+        {
+            Invoke("Start", 0.1f);
+            return;
+        }
+
         singleton = this;
         particles = transform.Find("Particles").gameObject;
         head = transform.Find("Head").gameObject;
@@ -37,126 +43,134 @@ public class SpiritScript : MonoBehaviour
         initialXScale = head.transform.localScale.x;
 
         animator = gameObject.GetComponentInChildren<Animator>();
-
         RogerScript.singleton.swapped.AddListener(Swap);
+        gameObject.SetActive(false);   
     }
 
     // Update is called once per frame
     void Update()
     {
-        Blink();
-        float speed = baseSpeed;
-        //Se deplace
-        float h = 0;
-        float v = 0;
-        if (isMoveable)
+        if (RogerScript.singleton == null || particles==null)
         {
-            h = Input.GetAxis("Horizontal"); //On recupere les axes
-            if (canFly)
-            {
-                v = Input.GetAxis("Vertical");
-            }
-        }
-
-        if (h == 0 && v == 0)
-        {
-            if (!isMoveable)
-            {
-                angle = Mathf.PI / 2;
-            }
-            speed = 0;
+            return;
         }
         else
         {
-            angle = Mathf.Atan2(v, h);
-            if (Mathf.Abs(h) > Mathf.Abs(v))
+            Blink();
+            float speed = baseSpeed;
+            //Se deplace
+            float h = 0;
+            float v = 0;
+            if (isMoveable)
             {
-                speed *= Mathf.Abs(h);
+                h = Input.GetAxis("Horizontal"); //On recupere les axes
+                if (canFly)
+                {
+                    v = Input.GetAxis("Vertical");
+                }
+            }
+
+            if (h == 0 && v == 0)
+            {
+                if (!isMoveable)
+                {
+                    angle = Mathf.PI / 2;
+                }
+                speed = 0;
             }
             else
             {
-                speed *= Mathf.Abs(v);
-            }
-        }
-        //On rotate les particles en fonction
-        //On recupere la rotation actuelle
-        float rotation = Mathf.Deg2Rad*particles.transform.eulerAngles.z;
-        float multi = 6 * Time.deltaTime;
-        if (multi > 1) //Si les FPS suivent pas, on va changer la velocité instantennement, pour eviter les dépassements etc.
-            multi = 1;
-
-        float diff = Mathf.Rad2Deg*(((angle) - rotation)*multi);
-        diff = multi * Mathf.Rad2Deg * Mathf.Atan2(Mathf.Sin(angle - rotation), Mathf.Cos(angle - rotation));
-
-        particles.transform.Rotate(new Vector3(0,0,diff));
-
-        Vector2 m_Move = new Vector2(speed*Mathf.Cos(angle),speed*Mathf.Sin(angle)); //Et on en fait un mouvement a appliquer
-        
-        Vector2 cVel = rb.velocity; //On recupere la velocité actuelle, pour pouvoir faire une transition
-
-        float multi2 = 5 * Time.deltaTime;
-        if (multi2 > 1) //Si les FPS suivent pas, on va changer la velocité instantennement, pour eviter les dépassements etc.
-            multi2 = 1;
-        //On va rapprocher la velocité actuelle de la vélocité désirée
-        rb.velocity = new Vector2(cVel.x + (m_Move.x - cVel.x) * multi, cVel.y + (m_Move.y - cVel.y) * multi);
-
-        animator.SetFloat("speed", Mathf.Abs(100 * h)+Mathf.Abs(100*v));
-
-        //Se retourne (code bien sale mais tkt)
-        if (h < 0)
-        {
-            if (head.transform.localScale.x > -initialXScale)
-            {
-                float localTurnSpeed = turnSpeed;
-                Vector3 change = new Vector3(-Time.deltaTime * localTurnSpeed, 0, 0);
-                if (head.transform.localScale.x - Time.deltaTime * localTurnSpeed < -initialXScale)
+                angle = Mathf.Atan2(v, h);
+                if (Mathf.Abs(h) > Mathf.Abs(v))
                 {
-                    change = new Vector3(-initialXScale - head.transform.localScale.x, 0, 0);
+                    speed *= Mathf.Abs(h);
                 }
-                head.transform.localScale += change;
-            }
-        }
-        else if (h > 0)
-        {
-            if (head.transform.localScale.x < initialXScale)
-            {
-                float localTurnSpeed = turnSpeed;
-                Vector3 change = new Vector3(Time.deltaTime * localTurnSpeed, 0, 0);
-                if (head.transform.localScale.x + Time.deltaTime * localTurnSpeed > initialXScale)
+                else
                 {
-                    change = new Vector3(initialXScale - head.transform.localScale.x, 0, 0);
+                    speed *= Mathf.Abs(v);
                 }
-                head.transform.localScale += change;
             }
-        }
-        else
-        {
-            if (head.transform.localScale.x < 0 && transform.localScale.x > -initialXScale)
+            //On rotate les particles en fonction
+            //On recupere la rotation actuelle
+            float rotation = Mathf.Deg2Rad * particles.transform.eulerAngles.z;
+            float multi = 6 * Time.deltaTime;
+            if (multi > 1) //Si les FPS suivent pas, on va changer la velocité instantennement, pour eviter les dépassements etc.
+                multi = 1;
+
+            float diff = Mathf.Rad2Deg * (((angle) - rotation) * multi);
+            diff = multi * Mathf.Rad2Deg * Mathf.Atan2(Mathf.Sin(angle - rotation), Mathf.Cos(angle - rotation));
+
+            particles.transform.Rotate(new Vector3(0, 0, diff));
+
+            Vector2 m_Move = new Vector2(speed * Mathf.Cos(angle), speed * Mathf.Sin(angle)); //Et on en fait un mouvement a appliquer
+
+            Vector2 cVel = rb.velocity; //On recupere la velocité actuelle, pour pouvoir faire une transition
+
+            float multi2 = 5 * Time.deltaTime;
+            if (multi2 > 1) //Si les FPS suivent pas, on va changer la velocité instantennement, pour eviter les dépassements etc.
+                multi2 = 1;
+            //On va rapprocher la velocité actuelle de la vélocité désirée
+            rb.velocity = new Vector2(cVel.x + (m_Move.x - cVel.x) * multi, cVel.y + (m_Move.y - cVel.y) * multi);
+
+            animator.SetFloat("speed", Mathf.Abs(100 * h) + Mathf.Abs(100 * v));
+
+            //Se retourne (code bien sale mais tkt)
+            if (h < 0)
             {
-                float localTurnSpeed = turnSpeed;
-                Vector3 change = new Vector3(-Time.deltaTime * localTurnSpeed, 0, 0);
-                if (head.transform.localScale.x - Time.deltaTime * localTurnSpeed < -initialXScale)
+                if (head.transform.localScale.x > -initialXScale)
                 {
-                    change = new Vector3(-initialXScale - head.transform.localScale.x, 0, 0);
+                    float localTurnSpeed = turnSpeed;
+                    Vector3 change = new Vector3(-Time.deltaTime * localTurnSpeed, 0, 0);
+                    if (head.transform.localScale.x - Time.deltaTime * localTurnSpeed < -initialXScale)
+                    {
+                        change = new Vector3(-initialXScale - head.transform.localScale.x, 0, 0);
+                    }
+                    head.transform.localScale += change;
                 }
-                head.transform.localScale += change;
             }
-            else if (head.transform.localScale.x > 0 && head.transform.localScale.x < initialXScale)
+            else if (h > 0)
             {
-                float localTurnSpeed = turnSpeed;
-                Vector3 change = new Vector3(Time.deltaTime * localTurnSpeed, 0, 0);
-                if (head.transform.localScale.x + Time.deltaTime * localTurnSpeed > initialXScale)
+                if (head.transform.localScale.x < initialXScale)
                 {
-                    change = new Vector3(initialXScale - head.transform.localScale.x, 0, 0);
+                    float localTurnSpeed = turnSpeed;
+                    Vector3 change = new Vector3(Time.deltaTime * localTurnSpeed, 0, 0);
+                    if (head.transform.localScale.x + Time.deltaTime * localTurnSpeed > initialXScale)
+                    {
+                        change = new Vector3(initialXScale - head.transform.localScale.x, 0, 0);
+                    }
+                    head.transform.localScale += change;
                 }
-                head.transform.localScale += change;
             }
-        }
+            else
+            {
+                if (head.transform.localScale.x < 0 && transform.localScale.x > -initialXScale)
+                {
+                    float localTurnSpeed = turnSpeed;
+                    Vector3 change = new Vector3(-Time.deltaTime * localTurnSpeed, 0, 0);
+                    if (head.transform.localScale.x - Time.deltaTime * localTurnSpeed < -initialXScale)
+                    {
+                        change = new Vector3(-initialXScale - head.transform.localScale.x, 0, 0);
+                    }
+                    head.transform.localScale += change;
+                }
+                else if (head.transform.localScale.x > 0 && head.transform.localScale.x < initialXScale)
+                {
+                    float localTurnSpeed = turnSpeed;
+                    Vector3 change = new Vector3(Time.deltaTime * localTurnSpeed, 0, 0);
+                    if (head.transform.localScale.x + Time.deltaTime * localTurnSpeed > initialXScale)
+                    {
+                        change = new Vector3(initialXScale - head.transform.localScale.x, 0, 0);
+                    }
+                    head.transform.localScale += change;
+                }
+            }
+        }  
     }
 
     void Swap()
     {
         this.isMoveable = !this.isMoveable;
+        gameObject.SetActive(!gameObject.activeSelf);
     }
 
     void Blink()
@@ -168,6 +182,7 @@ public class SpiritScript : MonoBehaviour
             {
                 blinkCooldown = maxBlinkCooldown;
                 collider.isTrigger = true;
+                rb.gravityScale = 0;
                 rb.velocity=(new Vector2(baseSpeed*2*Mathf.Cos(angle), baseSpeed*2*Mathf.Sin(angle)));
                 Invoke("Unblink", blinkTimer);
             }     
@@ -178,6 +193,7 @@ public class SpiritScript : MonoBehaviour
     {
         if (!this.canFly)
         {
+            rb.gravityScale = 3;
             collider.isTrigger = false;
         }
     }

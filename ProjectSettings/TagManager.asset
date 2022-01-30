@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - interactable
+  - checkpoint
   layers:
   - Default
   - TransparentFX

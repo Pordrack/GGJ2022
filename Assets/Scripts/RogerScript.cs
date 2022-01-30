@@ -162,7 +162,17 @@ public class RogerScript : MonoBehaviour
 
     void Swap()
     {
-        if (Input.GetButtonDown("Swap"))
+        bool otherCondition = this.isMoveable;
+        if (SpiritScript.singleton == null)
+        {
+            otherCondition |= true;
+        }
+        else
+        {
+            otherCondition |= SpiritScript.singleton.isMoveable;
+        }
+
+        if (Input.GetButtonDown("Swap") && otherCondition)
         {
             animator.SetBool("IsGhost",!animator.GetBool("IsGhost"));
             Invoke("DoTranslation",1f);
@@ -171,12 +181,9 @@ public class RogerScript : MonoBehaviour
     void DoTranslation(){
         swapped.Invoke();
         this.isMoveable = !this.isMoveable;
-        if (!this.isMoveable && !spiritForm.activeSelf)
-            {
-                
-                spiritForm.SetActive(true);
+        if (!this.isMoveable) { 
                 spiritForm.transform.SetPositionAndRotation(transform.position, spiritForm.transform.rotation);
-            }
+        }
     }
 
 

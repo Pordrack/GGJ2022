@@ -13,7 +13,7 @@ public class InteractScript : MonoBehaviour
         InteractPrompt = transform.Find("InteractKey").gameObject;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetButtonDown("Interact"))
         {
