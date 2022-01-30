@@ -16,7 +16,9 @@ public class AttackScript : MonoBehaviour
     public GameObject robot;
     private Boolean isInRange;
     private Boolean isLasering;
-    private Rigidbody2D clone;  
+    private Rigidbody2D clone;
+    private float cooldown = 0;
+    public float maxCooldown = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class AttackScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        cooldown -= Time.deltaTime;
         if(roger.transform.position.x <= this.transform.parent.position.x){
             this.transform.parent.rotation = new Quaternion(0,-180,0,0);
             isFacingRight = -1;
@@ -58,7 +61,8 @@ public class AttackScript : MonoBehaviour
         }
     }
     void StartAttackingPlayer(){   
-        if(isInRange && !isLasering){
+        if(isInRange && !isLasering && cooldown<0){
+            cooldown = maxCooldown;
             robot.GetComponent<LifeGestion>().SwapAttaks();
             attackCount+=1;
             Rigidbody2D clone;

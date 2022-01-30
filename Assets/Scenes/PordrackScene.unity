@@ -1294,8 +1294,12 @@ PrefabInstance:
       value: MovingElement
       objectReference: {fileID: 0}
     - target: {fileID: 5155337670489612024, guid: ef534e3a26a6a4d4bbe7204897f5f4f4, type: 3}
-      propertyPath: forceOn
+      propertyPath: flip
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155337670489612024, guid: ef534e3a26a6a4d4bbe7204897f5f4f4, type: 3}
+      propertyPath: forceOn
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5155337670489612025, guid: ef534e3a26a6a4d4bbe7204897f5f4f4, type: 3}
       propertyPath: m_RootOrder

@@ -9,10 +9,14 @@ public class MovingElement : MonoBehaviour
 
     private bool moving;
     public bool forceOn = false;
+    public bool flip = true;
+    public float turnSpeed = 5.0f;
 
+    private float initialXScale;
     public float speed = 2;
     void Start()
     {
+        initialXScale = transform.localScale.x;
         GameObject target = transform.Find("Target").gameObject;
         initialPosition= new Vector3(transform.position.x, transform.position.y, transform.position.z);
         targetPosition = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z);
@@ -44,6 +48,37 @@ public class MovingElement : MonoBehaviour
             else
             {
                 transform.position += move;
+            }
+
+            if (flip)
+            {
+                //Se retourne (code bien sale mais tkt)
+                if (targetPosition.x < initialPosition.x)
+                {
+                    if (transform.localScale.x > -initialXScale)
+                    {
+                        float localTurnSpeed = turnSpeed;
+                        Vector3 change = new Vector3(-Time.deltaTime * localTurnSpeed, 0, 0);
+                        if (transform.localScale.x - Time.deltaTime * localTurnSpeed < -initialXScale)
+                        {
+                            change = new Vector3(-initialXScale - transform.localScale.x, 0, 0);
+                        }
+                        transform.localScale += change;
+                    }
+                }
+                else if (targetPosition.x > initialPosition.x)
+                {
+                    if (transform.localScale.x < initialXScale)
+                    {
+                        float localTurnSpeed = turnSpeed;
+                        Vector3 change = new Vector3(Time.deltaTime * localTurnSpeed, 0, 0);
+                        if (transform.localScale.x + Time.deltaTime * localTurnSpeed > initialXScale)
+                        {
+                            change = new Vector3(initialXScale - transform.localScale.x, 0, 0);
+                        }
+                        transform.localScale += change;
+                    }
+                }
             }
         }
     }
