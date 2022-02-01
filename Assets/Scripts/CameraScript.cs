@@ -14,6 +14,7 @@ public class CameraScript : MonoBehaviour
     public float ppTransitionSpeed = 2;
     public PostProcessVolume postProcessing;
     public float controlRate=5;
+    private bool lockedOnTarget = false;
 
     public float minX = -50;
     public float minY = -30;
@@ -22,6 +23,7 @@ public class CameraScript : MonoBehaviour
     void Start()
     {    
         mainTarget = target1;
+        lockedOnTarget = true;
         transform.position = new Vector3(mainTarget.position.x,mainTarget.position.y,transform.position.z);
         if (RogerScript.singleton == null)
         {
@@ -34,11 +36,23 @@ public class CameraScript : MonoBehaviour
     private void Update()
     {
         //On bouge vers la target actuelle
-        float multi = controlRate * Time.deltaTime;
-        if (multi > 1) //Si les FPS suivent pas, on va changer la velocité instantennement, pour eviter les dépassements etc.
-            multi = 1;
-        //On va rapprocher la velocité actuelle de la vélocité désirée
-        transform.position = new Vector3(transform.position.x + (mainTarget.position.x - transform.position.x) * multi, transform.position.y + (mainTarget.position.y - transform.position.y) * multi,transform.position.z);
+        if (lockedOnTarget) //TP si on est deja sur notre cible
+        {
+            transform.position = new Vector3(mainTarget.transform.position.x,mainTarget.transform.position.y,transform.position.z);
+        }
+        else //Mouvement fluide pour passer d'une cible a l'autre
+        {
+            float multi = controlRate * Time.deltaTime;
+            if (multi > 1) //Si les FPS suivent pas, on va changer la velocité instantennement, pour eviter les dépassements etc.
+                multi = 1;
+            Vector2 vectorToApply = new Vector2(mainTarget.position.x-transform.position.x,mainTarget.position.y-transform.position.y);
+            if (Mathf.Abs(vectorToApply.x) + Mathf.Abs(vectorToApply.y) < 1)
+            {
+                lockedOnTarget = true;
+            }
+            //On va rapprocher la velocité actuelle de la vélocité désirée
+            transform.position = new Vector3(transform.position.x + vectorToApply.x * multi, transform.position.y + vectorToApply.y * multi, transform.position.z);
+        }
 
         //On change l'intensite du postProcessing
         float diff = Time.deltaTime * ppTransitionSpeed;
@@ -85,6 +99,7 @@ public class CameraScript : MonoBehaviour
             {
                 mainTarget = target1;
             }
+        lockedOnTarget = false;
         targetPostProcessingLevel = 1 - targetPostProcessingLevel;
     }
 }
